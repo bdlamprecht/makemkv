@@ -1,18 +1,5 @@
 version: '3'
 services:
-  blu:
-    image: jlesage/makemkv
-    restart: always
-    env_file: makemkv.env
-    ports:
-      - "5801:5800"
-    volumes:
-      - config:/config:rw
-      - storage:/storage:ro
-      - output:/output:rw
-    devices:
-      - "/dev/sg1:/dev/sg1"
-      - "/dev/sr1:/dev/sr1"
 
   dvd:
     image: jlesage/makemkv
@@ -25,9 +12,22 @@ services:
       - storage:/storage:ro
       - output:/output:rw
     devices:
-      - "/dev/sg1:/dev/sg0"
-      - "/dev/sr1:/dev/sr0"
+      - "/dev/sr1:/dev/sr1"
+      - "/dev/sg2:/dev/sg2"
 
+  blu:
+    image: jlesage/makemkv
+    restart: always
+    env_file: makemkv.env
+    ports:
+      - "5801:5800"
+    volumes:
+      - config:/config:rw
+      - storage:/storage:ro
+      - output:/output:rw
+    devices:
+      - "/dev/sr0:/dev/sr0"
+      - "/dev/sg1:/dev/sg1"
 
 volumes:
     config:
