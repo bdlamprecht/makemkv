@@ -7,6 +7,7 @@ services:
     env_file: makemkv.env
     ports:
       - "5800:5800"
+      - "5900:5900"
     volumes:
       - config:/config:rw
       - storage:/storage:ro
@@ -21,6 +22,7 @@ services:
     env_file: makemkv.env
     ports:
       - "5801:5800"
+      - "5901:5900"
     volumes:
       - config:/config:rw
       - storage:/storage:ro
